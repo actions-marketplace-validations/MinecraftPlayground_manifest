@@ -1,4 +1,35 @@
-# manifest
+# Manifest
+
+## Usage
+```yml
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    name: 'Manifest information'
+    steps:
+      - name: 'Get Manifest information'
+        id: manifest
+        uses: MinecraftPlayground/manifest@main
+        with:
+          version: 'latest-snapshot'
+
+      - name: 'Output'
+        run: |
+          echo "raw-json: ${{ steps.manifest.outputs.raw-json }}"
+          echo "latest-release-version: ${{ steps.manifest.outputs.latest-release-version }}"
+          echo "latest-snapshot-version: ${{ steps.manifest.outputs.latest-snapshot-version }}"
+          echo "versions: ${{ steps.manifest.outputs.versions }}"
+          echo "release-versions: ${{ steps.manifest.outputs.release-versions }}"
+          echo "snapshot-versions: ${{ steps.manifest.outputs.snapshot-versions }}"
+          echo "april-fools-versions: ${{ steps.manifest.outputs.april-fools-versions }}"
+          echo "type: ${{ steps.manifest.outputs.type }}"
+          echo "create-time: ${{ steps.manifest.outputs.create-time }}"
+          echo "release-time: ${{ steps.manifest.outputs.release-time }}"
+          echo "package-url: ${{ steps.manifest.outputs.package-url }}"
+          echo "client-download-url: ${{ steps.manifest.outputs.client-download-url }}"
+          echo "server-download-url: ${{ steps.manifest.outputs.server-download-url }}"
+          echo "asset-index-url: ${{ steps.manifest.outputs.asset-index-url }}"
+```
 
 ## Inputs
 | Key            | Required? | Type     | Default          | Description              |
