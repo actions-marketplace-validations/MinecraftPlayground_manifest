@@ -51,6 +51,10 @@ release_time=$(echo "$selected_version_object" | jq -r '.releaseTime')
 
 package_url_response=$(curl -L "$package_url")
 
+client_download_url=$(echo "$package_url_response" | jq -r '.downloads.client.url')
+server_download_url=$(echo "$package_url_response" | jq -r '.downloads.server.url')
+asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
+
 echo "$package_url_response"
 
 echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
@@ -64,5 +68,8 @@ echo "type=$type" >> "$GITHUB_OUTPUT"
 echo "package-url=$package_url" >> "$GITHUB_OUTPUT"
 echo "create-time=$create_time" >> "$GITHUB_OUTPUT"
 echo "release-time=$release_time" >> "$GITHUB_OUTPUT"
+echo "client-download-url=$client_download_url" >> "$GITHUB_OUTPUT"
+echo "server-download-url=$server_download_url" >> "$GITHUB_OUTPUT"
+echo "asset-index-url=$asset_index_url" >> "$GITHUB_OUTPUT"
 
 exit 0
