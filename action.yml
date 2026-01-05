@@ -54,13 +54,22 @@ outputs:
     description: 'Type of the version.'
 
   package-url:
-    description: 'Package url of the version.'
+    description: 'Package URL of the version.'
 
   create-time:
     description: 'Time when the version was created/uploaded.'
 
   release-time:
     description: 'Time when the version was officially released.'
+
+  client-download-url:
+    description: 'URL to download the client.'
+
+  server-download-url:
+    description: 'URL to download the server.'
+
+  asset-index-url:
+    description: 'URL thats points to the assets.'
 
 runs:
   using: 'docker'
