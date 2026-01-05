@@ -16,6 +16,7 @@
 # april-fools-versions
 # type
 # url
+# time
 # release-time
 
 manifest_response=$(curl -L $INPUT_MANIFEST_URL)
@@ -45,6 +46,7 @@ selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | selec
 
 type=$(echo "$selected_version_object" | jq -c '.type')
 url=$(echo "$selected_version_object" | jq -c '.url')
+time=$(echo "$selected_version_object" | jq -c '.time')
 release_time=$(echo "$selected_version_object" | jq -c '.releaseTime')
 
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
@@ -55,6 +57,7 @@ echo "snapshot-versions=$snapshot_versions" >> "$GITHUB_OUTPUT"
 echo "april-fools-versions=$april_fools_versions" >> "$GITHUB_OUTPUT"
 echo "type=$type" >> "$GITHUB_OUTPUT"
 echo "url=$url" >> "$GITHUB_OUTPUT"
+echo "time=$time" >> "$GITHUB_OUTPUT"
 echo "release-time=$release_time" >> "$GITHUB_OUTPUT"
 
 exit 0
