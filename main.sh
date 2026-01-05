@@ -23,7 +23,7 @@
 # server-download-url
 # asset-index-url
 
-manifest_response=$(curl -L "$INPUT_MANIFEST_URL") || {
+manifest_response=$(curl -fsSL "$INPUT_MANIFEST_URL") || {
   echo "::error::Fetch Failed: Could not fetch manifest"
   exit 1
 }
@@ -77,7 +77,7 @@ package_url=$(echo "$selected_version_object" | jq -r '.url')
 create_time=$(echo "$selected_version_object" | jq -r '.time')
 release_time=$(echo "$selected_version_object" | jq -r '.releaseTime')
 
-package_url_response=$(curl -L "$package_url") || {
+package_url_response=$(curl -fsSL "$package_url") || {
   echo "::error::Fetch Failed: Could not fetch package JSON"
   exit 1
 }
