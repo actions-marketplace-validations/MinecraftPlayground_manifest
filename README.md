@@ -1,4 +1,5 @@
 # Manifest
+GitHub Action that provides information about the Minecraft Manifest (ex. latest release or snapshot version).
 
 ## Usage
 ```yml
