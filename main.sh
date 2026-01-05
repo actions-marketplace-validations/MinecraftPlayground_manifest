@@ -19,34 +19,16 @@ manifest_response=$(curl -L $INPUT_MANIFEST_URL)
 
 echo "$manifest_response"
 
-versions=$($manifest_response | jq -r '.versions')
-latest_release_version=$($manifest_response | jq -r '.latest.release')
-latest_snapshot_version=$($manifest_response | jq -r '.latest.snapshot')
+versions=$(echo "$manifest_response" | jq -r '.versions')
+latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
+latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
 
-if [ "$INPUT_VERSION" == "latest-snapshot" ]; then
-  echo "Fetching the latest snapshot version."
-  latest_version=$($manifest_response | jq -r '.latest.snapshot')
-
-  if [ -z "$latest_version" ]; then
-    echo "Error: Could not find the latest snapshot version in the manifest."
-    exit 1
-  fi
-
-  echo "Using latest snapshot version: $latest_version"
-  INPUT_VERSION="$latest_version"
-
-elif [ "$INPUT_VERSION" == "latest-release" ]; then
-  echo "Fetching the latest release version."
-  latest_version=$($manifest_response | jq -r '.latest.release')
-
-  if [ -z "$latest_version" ]; then
-    echo "Error: Could not find the latest release version in the manifest."
-    exit 1
-  fi
-
-  echo "Using latest release version: $latest_version"
-  INPUT_VERSION="$latest_version"
-
+if [ "$INPUT_VERSION" == "latest-release" ]; then
+  echo "Using latest release version: $latest_release_version"
+  INPUT_VERSION="$latest_release_version"
+elif [ "$INPUT_VERSION" == "latest-snapshot" ]; then
+  echo "Using latest snapshot version: $latest_snapshot_version"
+  INPUT_VERSION="$latest_snapshot_version"
 else
   echo "Using specified version: $INPUT_VERSION"
 fi
