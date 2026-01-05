@@ -44,10 +44,10 @@ fi
 
 selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
 
-type=$(echo "$selected_version_object" | jq -c '.type')
-package_url=$(echo "$selected_version_object" | jq -c '.url')
-create_time=$(echo "$selected_version_object" | jq -c '.time')
-release_time=$(echo "$selected_version_object" | jq -c '.releaseTime')
+type=$(echo "$selected_version_object" | jq -r '.type')
+package_url=$(echo "$selected_version_object" | jq -r '.url')
+create_time=$(echo "$selected_version_object" | jq -r '.time')
+release_time=$(echo "$selected_version_object" | jq -r '.releaseTime')
 
 package_url_response=$(curl -L "$package_url")
 
