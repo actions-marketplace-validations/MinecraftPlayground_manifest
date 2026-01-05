@@ -86,8 +86,6 @@ client_download_url=$(echo "$package_url_response" | jq -r '.downloads.client.ur
 server_download_url=$(echo "$package_url_response" | jq -r '.downloads.server.url')
 asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
 
-echo "$package_url_response"
-
 echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
 echo "latest-release-version=$latest_release_version" >> "$GITHUB_OUTPUT"
