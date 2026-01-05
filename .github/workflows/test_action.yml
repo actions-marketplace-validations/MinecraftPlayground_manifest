@@ -16,9 +16,11 @@ jobs:
         uses: ./
         with:
           version: 'latest-snapshot'
-        
-      - name: 'List versions'
+      
+      - name: 'Output'
         run: |
-          OUTPUT_VERSIONS=${{ steps.run.outputs.versions }}
-          echo "Versions:"
-          echo $OUTPUT_VERSIONS
+          echo "latest-release-version: ${{ steps.run.outputs.latest-release-version }}"
+          echo "latest-snapshot-version: ${{ steps.run.outputs.latest-snapshot-version }}"
+          echo "versions: ${{ steps.run.outputs.versions }}"
+          echo "release-versions: ${{ steps.run.outputs.release-versions }}"
+          echo "snapshot-versions: ${{ steps.run.outputs.snapshot-versions }}"
