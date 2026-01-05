@@ -25,3 +25,6 @@ jobs:
           echo "release-versions: ${{ steps.run.outputs.release-versions }}"
           echo "snapshot-versions: ${{ steps.run.outputs.snapshot-versions }}"
           echo "april-fools-versions: ${{ steps.run.outputs.april-fools-versions }}"
+          echo "type: ${{ steps.run.outputs.type }}"
+          echo "url: ${{ steps.run.outputs.url }}"
+          echo "release-time: ${{ steps.run.outputs.release-time }}"
