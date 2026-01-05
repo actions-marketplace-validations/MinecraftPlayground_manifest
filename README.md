@@ -3,48 +3,19 @@
 ## Inputs
 
 ## Outputs
-| Key | Required | Type | Default |
-|-----|----------|------|---------|
-|     |          |      |         |
-|     |          |      |         |
-|     |          |      |         |
-  raw-json: 'The raw manifest file parsed as JSON.'
-    
-  latest-release-version:
-    description: 'The latest release version.'
-
-  latest-snapshot-version:
-    description: 'The latest snapshot version.'
-
-  versions:
-    description: 'List of all available versions.'
-
-  release-versions:
-    description: 'List of all available release versions.'
-
-  snapshot-versions:
-    description: 'List of all available snapshot versions.'
-
-  spril-fools-versions:
-    description: 'List of all available april fools versions.'
-
-  type:
-    description: 'Type of the version.'
-
-  create-time:
-    description: 'Time when the version was created/uploaded.'
-
-  release-time:
-    description: 'Time when the version was officially released.'
-
-  package-url:
-    description: 'Package URL of the version.'
-
-  client-download-url:
-    description: 'URL to download the client.'
-
-  server-download-url:
-    description: 'URL to download the server.'
-
-  asset-index-url:
-    description: 'URL thats points to the assets.'
+| Key                       | Type       | Description                                                                   |
+|---------------------------|------------|-------------------------------------------------------------------------------|
+| `raw-json`                | `string`   | The raw manifest file parsed as JSON.                                         |
+| `type`                    | `string`   | Type of the version.                                                          |
+| `latest-release-version`  | `string`   | The latest release version.                                                   |
+| `latest-snapshot-version` | `string`   | The latest snapshot version.                                                  |
+| `versions`                | `string[]` | List of all available versions.                                               |
+| `release-versions`        | `string[]` | List of all available release versions.                                       |
+| `snapshot-versions`       | `string[]` | List of all available snapshot versions.                                      |
+| `spril-fools-versions`    | `string[]` | List of all available april fools versions.                                   |
+| `create-time`             | `string`   | Time when the version was created/uploaded. (Based on the input `version`)    |
+| `release-time`            | `string`   | Time when the version was officially released. (Based on the input `version`) |
+| `package-url`             | `string`   | Package URL of the version. (Based on the input `version`)                    |
+| `client-download-url`     | `string`   | URL to download the client. (Based on the input `version`)                    |
+| `server-download-url`     | `string`   | URL to download the server. (Based on the input `version`)                    |
+| `asset-index-url`         | `string`   | URL thats points to the assets. (Based on the input `version`)                |
