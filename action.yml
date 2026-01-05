@@ -53,8 +53,11 @@ outputs:
   url:
     description: 'Package url of the version.'
 
+  time:
+    description: 'Time when the version was created/uploaded.'
+
   release-time:
-    description: 'Time when the version was released.'
+    description: 'Time when the version was officially released.'
 
 runs:
   using: 'docker'
