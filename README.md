@@ -21,6 +21,7 @@ jobs:
           echo "raw-json: ${{ steps.manifest.outputs.raw-json }}"
           echo "latest-release-version: ${{ steps.manifest.outputs.latest-release-version }}"
           echo "latest-snapshot-version: ${{ steps.manifest.outputs.latest-snapshot-version }}"
+          echo "java-version: ${{ steps.manifest.outputs.java-version }}"
           echo "versions: ${{ steps.manifest.outputs.versions }}"
           echo "release-versions: ${{ steps.manifest.outputs.release-versions }}"
           echo "snapshot-versions: ${{ steps.manifest.outputs.snapshot-versions }}"
@@ -48,6 +49,7 @@ jobs:
 | `type`                    | `string`   | Type of the version.                                                                     |
 | `latest-release-version`  | `string`   | The latest release version.                                                              |
 | `latest-snapshot-version` | `string`   | The latest snapshot version.                                                             |
+| `java-version`            | `number`   | The java version used to compile the jar.                                                |
 | `versions`                | `string[]` | List of all available versions.                                                          |
 | `release-versions`        | `string[]` | List of all available release versions.                                                  |
 | `snapshot-versions`       | `string[]` | List of all available snapshot versions.                                                 |
