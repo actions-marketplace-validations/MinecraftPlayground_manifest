@@ -35,8 +35,17 @@ outputs:
   latest-snapshot-version:
     description: 'The latest snapshot version.'
 
-  all-versions:
+  versions:
     description: 'List of all available versions.'
+
+  release-versions:
+    description: 'List of all available release versions.'
+
+  snapshot-versions:
+    description: 'List of all available snapshot versions.'
+
+  spril-fools-versions:
+    description: 'List of all available april fools versions.'
 
 runs:
   using: 'docker'
