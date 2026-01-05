@@ -3,7 +3,7 @@
 ## Inputs
 | Key            | Required? | Type     | Default          | Description              |
 |----------------|-----------|----------|------------------|--------------------------|
-| `version`      | No        | `string` | `latest-release` | Version to get information for.<br><br>Possible values:<br>- `latest-snapshot`<br>- `latest-release`<br>- `<valid_version>` (ex. 1.21.11 or 26.1-snapshot-1) |
+| `version`      | No        | `string` | `latest-release` | Version to get information for.<br><br>Possible values:<ul><li>`latest-snapshot`</li><li>`latest-release`</li><li>`<valid_version>` (ex. 1.21.11 or 26.1-snapshot-1)</li></ul> |
 | `manifest-url` | No        | `string` | `https://piston-meta.mojang.com/mc/game/version_manifest_v2.json` | URL to the manifest API. |
 
 ## Outputs
