@@ -4,6 +4,7 @@
 # 
 # $INPUT_VERSION
 # $INPUT_MANIFEST_URL
+# $INPUT_IF_VERSION_IS_INVALID
 
 # Global outputs:
 #
@@ -22,7 +23,10 @@
 # server-download-url
 # asset-index-url
 
-manifest_response=$(curl -L "$INPUT_MANIFEST_URL")
+manifest_response=$(curl -L "$INPUT_MANIFEST_URL") || {
+  echo "::error title=Fetch Failed::Could not fetch manifest"
+  exit 1
+}
 
 raw_json="$manifest_response"
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
@@ -34,7 +38,7 @@ april_fools_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(
 
 selected_version=$INPUT_VERSION
 
-if [[ "$INPUT_VERSION" == "latest-release" || "$INPUT_VERSION" == "" ]]; then
+if [ "$INPUT_VERSION" = "latest-release" ] || [ -z "$INPUT_VERSION" ]; then
   echo "Using latest release version: $latest_release_version"
   selected_version="$latest_release_version"
 elif [ "$INPUT_VERSION" == "latest-snapshot" ]; then
@@ -46,12 +50,37 @@ fi
 
 selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
 
+if [ -z "$selected_version_object" ]; then
+  case "$INPUT_IF_VERSION_IS_INVALID" in
+    warn)
+      echo "::warning title=Invalid Version::Falling back to latest release ($latest_release_version)" >&2
+      selected_version="$latest_release_version"
+      selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
+      ;;
+    ignore)
+      selected_version="$latest_release_version"
+      selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
+      ;;
+    error)
+      echo "::error title=Invalid Version::Failing" >&2
+      exit 1
+      ;;
+    *)
+      echo "::error title=Invalid Parameter::Invalid value for parameter 'if-version-is-invalid': $INPUT_IF_VERSION_IS_INVALID" >&2
+      exit 1
+      ;;
+  esac
+fi
+
 type=$(echo "$selected_version_object" | jq -r '.type')
 package_url=$(echo "$selected_version_object" | jq -r '.url')
 create_time=$(echo "$selected_version_object" | jq -r '.time')
 release_time=$(echo "$selected_version_object" | jq -r '.releaseTime')
 
-package_url_response=$(curl -L "$package_url")
+package_url_response=$(curl -L "$package_url") || {
+  echo "::error title=Fetch Failed::Could not fetch package JSON"
+  exit 1
+}
 
 client_download_url=$(echo "$package_url_response" | jq -r '.downloads.client.url')
 server_download_url=$(echo "$package_url_response" | jq -r '.downloads.server.url')
