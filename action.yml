@@ -29,6 +29,9 @@ inputs:
     default: 'https://resources.download.minecraft.net'
 
 outputs:
+  raw-json:
+    description: 'The raw manifest file parsed as JSON.'
+    
   latest-release-version:
     description: 'The latest release version.'
 
