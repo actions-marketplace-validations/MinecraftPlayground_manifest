@@ -19,6 +19,7 @@ jobs:
       
       - name: 'Output'
         run: |
+          echo "raw-json: ${{ steps.run.outputs.raw-json }}"
           echo "latest-release-version: ${{ steps.run.outputs.latest-release-version }}"
           echo "latest-snapshot-version: ${{ steps.run.outputs.latest-snapshot-version }}"
           echo "versions: ${{ steps.run.outputs.versions }}"
