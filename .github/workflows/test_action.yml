@@ -19,7 +19,6 @@ jobs:
       
       - name: 'Output'
         run: |
-          echo "${{ fromJSON(steps.run.outputs.april-fools-versions)[0] }}"
           echo "latest-release-version: ${{ steps.run.outputs.latest-release-version }}"
           echo "latest-snapshot-version: ${{ steps.run.outputs.latest-snapshot-version }}"
           echo "versions: ${{ steps.run.outputs.versions }}"
