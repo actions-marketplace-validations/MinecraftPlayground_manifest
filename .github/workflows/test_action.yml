@@ -11,6 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 'Run Invalid'
+        id: run-invalid
+        uses: ./
+        with:
+          version: '---'
+          if-version-is-invalid: 'warn'
+          
       - name: 'Run'
         id: run
         uses: ./
