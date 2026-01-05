@@ -16,7 +16,7 @@
 # snapshot-versions
 # april-fools-versions
 # type
-# url
+# package-url
 # create-time
 # release-time
 
@@ -45,9 +45,13 @@ fi
 selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
 
 type=$(echo "$selected_version_object" | jq -c '.type')
-url=$(echo "$selected_version_object" | jq -c '.url')
+package_url=$(echo "$selected_version_object" | jq -c '.url')
 create_time=$(echo "$selected_version_object" | jq -c '.time')
 release_time=$(echo "$selected_version_object" | jq -c '.releaseTime')
+
+package_url_response=$(curl -L $package_url)
+
+echo "$package_url_response"
 
 echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
@@ -57,7 +61,7 @@ echo "release-versions=$release_versions" >> "$GITHUB_OUTPUT"
 echo "snapshot-versions=$snapshot_versions" >> "$GITHUB_OUTPUT"
 echo "april-fools-versions=$april_fools_versions" >> "$GITHUB_OUTPUT"
 echo "type=$type" >> "$GITHUB_OUTPUT"
-echo "url=$url" >> "$GITHUB_OUTPUT"
+echo "package-url=$package_url" >> "$GITHUB_OUTPUT"
 echo "create-time=$create_time" >> "$GITHUB_OUTPUT"
 echo "release-time=$release_time" >> "$GITHUB_OUTPUT"
 
