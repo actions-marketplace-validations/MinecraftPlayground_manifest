@@ -47,6 +47,15 @@ outputs:
   spril-fools-versions:
     description: 'List of all available april fools versions.'
 
+  type:
+    description: 'Type of the version.'
+
+  url:
+    description: 'Package url of the version.'
+
+  release-time:
+    description: 'Time when the version was released.'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
