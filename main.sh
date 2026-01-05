@@ -19,6 +19,9 @@
 # package-url
 # create-time
 # release-time
+# client-download-url
+# server-download-url
+# asset-index-url
 
 manifest_response=$(curl -L "$INPUT_MANIFEST_URL")
 
