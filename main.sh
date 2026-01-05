@@ -12,6 +12,7 @@
 # type
 # latest-release-version
 # latest-snapshot-version
+# java-version
 # versions
 # release-versions
 # snapshot-versions
@@ -85,11 +86,13 @@ package_url_response=$(curl -fsSL "$package_url") || {
 client_download_url=$(echo "$package_url_response" | jq -r '.downloads.client.url')
 server_download_url=$(echo "$package_url_response" | jq -r '.downloads.server.url')
 asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
+java_version=$(echo "$package_url_response" | jq -r '.javaVersion.majorVersion')
 
 echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
 echo "latest-release-version=$latest_release_version" >> "$GITHUB_OUTPUT"
 echo "latest-snapshot-version=$latest_snapshot_version" >> "$GITHUB_OUTPUT"
+echo "java-version=$java_version" >> "$GITHUB_OUTPUT"
 echo "release-versions=$release_versions" >> "$GITHUB_OUTPUT"
 echo "snapshot-versions=$snapshot_versions" >> "$GITHUB_OUTPUT"
 echo "april-fools-versions=$april_fools_versions" >> "$GITHUB_OUTPUT"
