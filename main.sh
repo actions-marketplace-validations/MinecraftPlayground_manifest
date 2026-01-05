@@ -8,6 +8,7 @@
 
 # Global outputs:
 #
+# version
 # raw-json
 # type
 # latest-release-version
@@ -88,6 +89,7 @@ server_download_url=$(echo "$package_url_response" | jq -r '.downloads.server.ur
 asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
 java_version=$(echo "$package_url_response" | jq -r '.javaVersion.majorVersion')
 
+echo "version=$selected_version" >> "$GITHUB_OUTPUT"
 echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
 echo "latest-release-version=$latest_release_version" >> "$GITHUB_OUTPUT"
