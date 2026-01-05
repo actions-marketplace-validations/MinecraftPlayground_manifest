@@ -84,4 +84,4 @@ runs:
   env:
     INPUT_VERSION: ${{ inputs.version }}
     INPUT_MANIFEST_URL: ${{ inputs.manifest-url }}
-    INPUT_RESOURCES_URL: ${{ inputs.resources-url }}
+    INPUT_IF_VERSION_IS_INVALID: ${{ inputs.if-version-is-invalid }}
