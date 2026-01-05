@@ -19,7 +19,7 @@ manifest_response=$(curl -L $INPUT_MANIFEST_URL)
 
 echo "$manifest_response"
 
-versions=$(echo "$manifest_response" | jq -r '.versions[].id')
+versions=$(echo "$manifest_response" | jq -c '[.versions[].id]')
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
 latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
 
