@@ -8,6 +8,7 @@
 
 # Global outputs:
 #
+# raw-json
 # latest-release-version
 # latest-snapshot-version
 # versions
@@ -23,6 +24,7 @@ manifest_response=$(curl -L $INPUT_MANIFEST_URL)
 
 echo "$manifest_response"
 
+raw_json=$(echo "$manifest_response" | jq -r '.')
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
 latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
 versions=$(echo "$manifest_response" | jq -c '[.versions[].id] | reverse')
@@ -49,6 +51,7 @@ url=$(echo "$selected_version_object" | jq -c '.url')
 time=$(echo "$selected_version_object" | jq -c '.time')
 release_time=$(echo "$selected_version_object" | jq -c '.releaseTime')
 
+echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
 echo "latest-release-version=$latest_release_version" >> "$GITHUB_OUTPUT"
 echo "latest-snapshot-version=$latest_snapshot_version" >> "$GITHUB_OUTPUT"
