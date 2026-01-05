@@ -7,9 +7,16 @@ branding:
 
 inputs:
   version: 
-    description: 'Version to get information for.'
+    description: |
+      Version to get information for.
+
+      Possible values:
+      - 'latest-snapshot'
+      - 'latest-release'
+      - <valid_version> (ex. 1.21.11 or 26.1-snapshot-1)
+      
     required: false
-    default: ''
+    default: 'latest-release'
 
   manifest-url:
     description: 'URL to the manifest API.'
