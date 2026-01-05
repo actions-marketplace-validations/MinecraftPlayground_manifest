@@ -27,6 +27,9 @@ inputs:
 outputs:
   raw-json:
     description: 'The raw manifest file parsed as JSON.'
+
+  type:
+    description: 'Type of the version.'
     
   latest-release-version:
     description: 'The latest release version.'
@@ -46,26 +49,23 @@ outputs:
   spril-fools-versions:
     description: 'List of all available april fools versions.'
 
-  type:
-    description: 'Type of the version.'
-
   create-time:
-    description: 'Time when the version was created/uploaded.'
+    description: 'Time when the version was created/uploaded. (Based on the input version)'
 
   release-time:
-    description: 'Time when the version was officially released.'
+    description: 'Time when the version was officially released. (Based on the input version)'
 
   package-url:
-    description: 'Package URL of the version.'
+    description: 'Package URL of the version. (Based on the input version)'
 
   client-download-url:
-    description: 'URL to download the client.'
+    description: 'URL to download the client. (Based on the input version)'
 
   server-download-url:
-    description: 'URL to download the server.'
+    description: 'URL to download the server. (Based on the input version)'
 
   asset-index-url:
-    description: 'URL thats points to the assets.'
+    description: 'URL thats points to the assets. (Based on the input version)'
 
 runs:
   using: 'docker'
