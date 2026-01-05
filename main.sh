@@ -4,7 +4,6 @@
 # 
 # $INPUT_VERSION
 # $INPUT_MANIFEST_URL
-# $INPUT_RESOURCES_URL
 
 # Global outputs:
 #
