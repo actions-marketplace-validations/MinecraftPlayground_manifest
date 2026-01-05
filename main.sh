@@ -41,7 +41,7 @@ else
   echo "Using specified version: $INPUT_VERSION"
 fi
 
-selected_version_object=$(echo "$manifest_response" | jq -c '.versions[] | select(.id=="$selected_version")')
+selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
 
 type=$(echo "$selected_version_object" | jq -c '.type')
 url=$(echo "$selected_version_object" | jq -c '.url')
