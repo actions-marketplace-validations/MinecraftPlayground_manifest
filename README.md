@@ -1,6 +1,8 @@
 # Manifest
 GitHub Action that provides information about the Minecraft Manifest (ex. latest release or snapshot version).
 
+[![Test Action](https://github.com/MinecraftPlayground/manifest/actions/workflows/test_action.yml/badge.svg)](https://github.com/MinecraftPlayground/manifest/actions/workflows/test_action.yml)
+
 ## Usage
 ```yml
 jobs:
