@@ -35,10 +35,11 @@ jobs:
 ```
 
 ## Inputs
-| Key            | Required? | Type     | Default          | Description              |
-|----------------|-----------|----------|------------------|--------------------------|
-| `version`      | No        | `string` | `latest-release` | Version to get information for.<br><br>Possible values:<ul><li>`latest-snapshot`</li><li>`latest-release`</li><li>`<valid_version>` (ex. `1.21.11` or `26.1-snapshot-1`)</li></ul> |
-| `manifest-url` | No        | `string` | `https://piston-meta.mojang.com/mc/game/version_manifest_v2.json` | URL to the manifest API. |
+| Key                     | Required? | Type                          | Default          | Description              |
+|-------------------------|-----------|-------------------------------|------------------|--------------------------|
+| `version`               | No        | `string`                      | `latest-release` | Version to get information for.<br><br>Possible values:<ul><li>`latest-snapshot`</li><li>`latest-release`</li><li>`<valid_version>` (ex. `1.21.11` or `26.1-snapshot-1`)</li></ul> |
+| `manifest-url`          | No        | `string`                      | `https://piston-meta.mojang.com/mc/game/version_manifest_v2.json` | URL to the manifest API. |
+| `if-version-is-invalid` | No        | `warn` \| `error` \| `ignore` | `warn`           | The desired behavior if the provided version is invalid.<br><br>Possible values:<ul><li>`warn`: Output a warning but do not fail the action</li><li>`error`: Fail the action with an error message</li><li>`ignore`: Do not output any warnings or errors, the action does not fail</li></ul> |
 
 ## Outputs
 | Key                       | Type       | Description                                                                              |
