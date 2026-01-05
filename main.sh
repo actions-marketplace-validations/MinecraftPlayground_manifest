@@ -22,7 +22,7 @@
 
 manifest_response=$(curl -L $INPUT_MANIFEST_URL)
 
-raw_json=$(echo "$manifest_response" | jq -r '.')
+raw_json="$manifest_response"
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
 latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
 versions=$(echo "$manifest_response" | jq -c '[.versions[].id] | reverse')
