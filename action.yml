@@ -26,7 +26,7 @@ inputs:
 
   if-version-is-invalid:
     description: |
-      The desired behavior if the provided version is invalid
+      The desired behavior if the provided version is invalid.
 
       Possible values:
       - warn: Output a warning but do not fail the action
