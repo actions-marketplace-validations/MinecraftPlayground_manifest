@@ -24,7 +24,7 @@
 # asset-index-url
 
 manifest_response=$(curl -L "$INPUT_MANIFEST_URL") || {
-  echo "::error title=Fetch Failed::Could not fetch manifest"
+  echo "::error::Fetch Failed: Could not fetch manifest"
   exit 1
 }
 
@@ -53,7 +53,7 @@ selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | selec
 if [ -z "$selected_version_object" ]; then
   case "$INPUT_IF_VERSION_IS_INVALID" in
     warn)
-      echo "::warning title=Invalid Version::Falling back to latest release ($latest_release_version)" >&2
+      echo "::warning::Invalid Version: Falling back to latest release ($latest_release_version)" >&2
       selected_version="$latest_release_version"
       selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
       ;;
@@ -62,11 +62,11 @@ if [ -z "$selected_version_object" ]; then
       selected_version_object=$(echo "$manifest_response" | jq -c ".versions[] | select(.id==\"$selected_version\")")
       ;;
     error)
-      echo "::error title=Invalid Version::Failing" >&2
+      echo "::error::Invalid Version: Failing" >&2
       exit 1
       ;;
     *)
-      echo "::error title=Invalid Parameter::Invalid value for parameter 'if-version-is-invalid': $INPUT_IF_VERSION_IS_INVALID" >&2
+      echo "::error::Invalid Parameter: Invalid value for parameter 'if-version-is-invalid': $INPUT_IF_VERSION_IS_INVALID" >&2
       exit 1
       ;;
   esac
@@ -78,7 +78,7 @@ create_time=$(echo "$selected_version_object" | jq -r '.time')
 release_time=$(echo "$selected_version_object" | jq -r '.releaseTime')
 
 package_url_response=$(curl -L "$package_url") || {
-  echo "::error title=Fetch Failed::Could not fetch package JSON"
+  echo "::error::Fetch Failed: Could not fetch package JSON"
   exit 1
 }
 
