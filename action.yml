@@ -1,0 +1,40 @@
+name: 'Manifest'
+description: 'Get information about the Minecraft Manifest (ex. latest release or snapshot version)'
+author: 'Mqxx'
+branding:
+  icon: 'file'
+  color: 'green'
+
+inputs:
+  version: 
+    description: 'Version to get information for.'
+    required: false
+    default: ''
+
+  manifest-url:
+    description: 'URL to the manifest API.'
+    required: false
+    default: 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json'
+  
+  resources-url:
+    description: 'URL to the resources API.'
+    required: false
+    default: 'https://resources.download.minecraft.net'
+
+outputs:
+  latest-release-version:
+    description: 'The latest release version.'
+
+  latest-snapshot-version:
+    description: 'The latest snapshot version.'
+
+  all-versions:
+    description: 'List of all available versions.'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    INPUT_VERSION: ${{ inputs.version }}
+    INPUT_MANIFEST_URL: ${{ inputs.manifest-url }}
+    INPUT_RESOURCES_URL: ${{ inputs.resources-url }}
