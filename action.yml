@@ -23,11 +23,6 @@ inputs:
     description: 'URL to the manifest API.'
     required: false
     default: 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json'
-  
-  resources-url:
-    description: 'URL to the resources API.'
-    required: false
-    default: 'https://resources.download.minecraft.net'
 
 outputs:
   raw-json:
