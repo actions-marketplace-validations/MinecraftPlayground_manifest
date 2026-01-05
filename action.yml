@@ -53,14 +53,14 @@ outputs:
   type:
     description: 'Type of the version.'
 
-  package-url:
-    description: 'Package URL of the version.'
-
   create-time:
     description: 'Time when the version was created/uploaded.'
 
   release-time:
     description: 'Time when the version was officially released.'
+
+  package-url:
+    description: 'Package URL of the version.'
 
   client-download-url:
     description: 'URL to download the client.'
