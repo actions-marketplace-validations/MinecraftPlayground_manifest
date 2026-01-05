@@ -1,5 +1,5 @@
 # https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax
-name: 'Manifest'
+name: 'minecraft-manifest'
 description: 'GitHub Action that provides information about the Minecraft Manifest (ex. latest release or snapshot version)'
 author: 'Mqxx'
 branding:
