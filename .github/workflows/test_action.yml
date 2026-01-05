@@ -28,4 +28,5 @@ jobs:
           echo "april-fools-versions: ${{ steps.run.outputs.april-fools-versions }}"
           echo "type: ${{ steps.run.outputs.type }}"
           echo "url: ${{ steps.run.outputs.url }}"
+          echo "time: ${{ steps.run.outputs.time }}"
           echo "release-time: ${{ steps.run.outputs.release-time }}"
