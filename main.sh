@@ -24,6 +24,7 @@ latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
 versions=$(echo "$manifest_response" | jq -c '[.versions[].id] | reverse')
 release_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="release") | .id] | reverse')
 snapshot_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="snapshot") | .id] | reverse')
+april_fools_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.releaseTime | test("-04-01T")) | .id] | reverse')
 
 if [ "$INPUT_VERSION" == "latest-release" ]; then
   echo "Using latest release version: $latest_release_version"
