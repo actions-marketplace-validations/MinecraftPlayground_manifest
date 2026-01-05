@@ -21,9 +21,9 @@ echo "$manifest_response"
 
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
 latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
-versions=$(echo "$manifest_response" | jq -c '[.versions[].id]')
-release_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="release") | .id]')
-snapshot_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="snapshot") | .id]')
+versions=$(echo "$manifest_response" | jq -c '[.versions[].id]' | reverse)
+release_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="release") | .id]' | reverse)
+snapshot_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="snapshot") | .id]' | reverse)
 
 if [ "$INPUT_VERSION" == "latest-release" ]; then
   echo "Using latest release version: $latest_release_version"
