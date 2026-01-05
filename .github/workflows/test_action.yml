@@ -21,4 +21,4 @@ jobs:
         run: |
           OUTPUT_VERSIONS=${{ steps.run.outputs.versions }}
           echo "Versions:"
-          echo $OUTPUT_VERSIONS | jq '.[]'
+          echo $OUTPUT_VERSIONS
