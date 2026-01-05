@@ -49,7 +49,7 @@ outputs:
     description: 'The latest snapshot version.'
 
   java-version:
-    description: 'The java version used to compile the jar'
+    description: 'The java version used to compile the jar.'
 
   versions:
     description: 'List of all available versions.'
