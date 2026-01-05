@@ -56,7 +56,7 @@ outputs:
   url:
     description: 'Package url of the version.'
 
-  time:
+  create-time:
     description: 'Time when the version was created/uploaded.'
 
   release-time:
