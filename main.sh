@@ -8,12 +8,12 @@
 
 # Global outputs:
 #
-# versions
 # latest-release-version
 # latest-snapshot-version
+# versions
 # release-versions
 # snapshot-versions
-# spril-fools-versions
+# april-fools-versions
 
 manifest_response=$(curl -L $INPUT_MANIFEST_URL)
 
@@ -40,5 +40,6 @@ echo "latest-release-version=$latest_release_version" >> "$GITHUB_OUTPUT"
 echo "latest-snapshot-version=$latest_snapshot_version" >> "$GITHUB_OUTPUT"
 echo "release-versions=$release_versions" >> "$GITHUB_OUTPUT"
 echo "snapshot-versions=$snapshot_versions" >> "$GITHUB_OUTPUT"
+echo "april-fools-versions=$april_fools_versions" >> "$GITHUB_OUTPUT"
 
 exit 0
