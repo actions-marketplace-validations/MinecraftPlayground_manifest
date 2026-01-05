@@ -19,7 +19,7 @@ jobs:
       
       - name: 'Output'
         run: |
-          # echo "raw-json: ${{ steps.run.outputs.raw-json }}"
+          echo "raw-json: ${{ steps.run.outputs.raw-json }}"
           echo "latest-release-version: ${{ steps.run.outputs.latest-release-version }}"
           echo "latest-snapshot-version: ${{ steps.run.outputs.latest-snapshot-version }}"
           echo "versions: ${{ steps.run.outputs.versions }}"
@@ -27,9 +27,9 @@ jobs:
           echo "snapshot-versions: ${{ steps.run.outputs.snapshot-versions }}"
           echo "april-fools-versions: ${{ steps.run.outputs.april-fools-versions }}"
           echo "type: ${{ steps.run.outputs.type }}"
-          echo "package-url: ${{ steps.run.outputs.package-url }}"
           echo "create-time: ${{ steps.run.outputs.create-time }}"
           echo "release-time: ${{ steps.run.outputs.release-time }}"
+          echo "package-url: ${{ steps.run.outputs.package-url }}"
           echo "client-download-url: ${{ steps.run.outputs.client-download-url }}"
           echo "server-download-url: ${{ steps.run.outputs.server-download-url }}"
           echo "asset-index-url: ${{ steps.run.outputs.asset-index-url }}"
