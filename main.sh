@@ -19,9 +19,11 @@ manifest_response=$(curl -L $INPUT_MANIFEST_URL)
 
 echo "$manifest_response"
 
-versions=$(echo "$manifest_response" | jq -c '[.versions[].id]')
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
 latest_snapshot_version=$(echo "$manifest_response" | jq -r '.latest.snapshot')
+versions=$(echo "$manifest_response" | jq -c '[.versions[].id]')
+release_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="release") | .id]')
+snapshot_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(.type=="snapshot") | .id]')
 
 if [ "$INPUT_VERSION" == "latest-release" ]; then
   echo "Using latest release version: $latest_release_version"
@@ -36,5 +38,7 @@ fi
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
 echo "latest-release-version=$latest_release_version" >> "$GITHUB_OUTPUT"
 echo "latest-snapshot-version=$latest_snapshot_version" >> "$GITHUB_OUTPUT"
+echo "release-versions=$release_versions" >> "$GITHUB_OUTPUT"
+echo "snapshot-versions=$snapshot_versions" >> "$GITHUB_OUTPUT"
 
 exit 0
