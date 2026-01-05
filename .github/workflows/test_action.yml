@@ -30,3 +30,6 @@ jobs:
           echo "package-url: ${{ steps.run.outputs.package-url }}"
           echo "create-time: ${{ steps.run.outputs.create-time }}"
           echo "release-time: ${{ steps.run.outputs.release-time }}"
+          echo "client-download-url: ${{ steps.run.outputs.client-download-url }}"
+          echo "server-download-url: ${{ steps.run.outputs.server-download-url }}"
+          echo "asset-index-url: ${{ steps.run.outputs.asset-index-url }}"
