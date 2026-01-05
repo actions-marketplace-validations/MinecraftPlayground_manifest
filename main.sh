@@ -20,7 +20,7 @@
 # create-time
 # release-time
 
-manifest_response=$(curl -L $INPUT_MANIFEST_URL)
+manifest_response=$(curl -L "$INPUT_MANIFEST_URL")
 
 raw_json="$manifest_response"
 latest_release_version=$(echo "$manifest_response" | jq -r '.latest.release')
@@ -49,7 +49,7 @@ package_url=$(echo "$selected_version_object" | jq -c '.url')
 create_time=$(echo "$selected_version_object" | jq -c '.time')
 release_time=$(echo "$selected_version_object" | jq -c '.releaseTime')
 
-package_url_response=$(curl -L $package_url)
+package_url_response=$(curl -L "$package_url")
 
 echo "$package_url_response"
 
