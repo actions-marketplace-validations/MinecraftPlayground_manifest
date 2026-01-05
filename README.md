@@ -18,6 +18,7 @@ jobs:
 
       - name: 'Output'
         run: |
+          echo "version: ${{ steps.manifest.outputs.version }}"
           echo "raw-json: ${{ steps.manifest.outputs.raw-json }}"
           echo "latest-release-version: ${{ steps.manifest.outputs.latest-release-version }}"
           echo "latest-snapshot-version: ${{ steps.manifest.outputs.latest-snapshot-version }}"
@@ -43,20 +44,21 @@ jobs:
 | `if-version-is-invalid` | No        | `warn` \| `error` \| `ignore` | `warn`           | The desired behavior if the provided version is invalid.<br><br>Possible values:<ul><li>`warn`: Output a warning but do not fail the action</li><li>`error`: Fail the action with an error message</li><li>`ignore`: Do not output any warnings or errors, the action does not fail</li></ul> |
 
 ## Outputs
-| Key                       | Type       | Description                                                                              |
-|---------------------------|------------|------------------------------------------------------------------------------------------|
-| `raw-json`                | `string`   | The raw manifest file parsed as JSON.                                                    |
-| `type`                    | `string`   | Type of the version.                                                                     |
-| `latest-release-version`  | `string`   | The latest release version.                                                              |
-| `latest-snapshot-version` | `string`   | The latest snapshot version.                                                             |
-| `java-version`            | `number`   | The java version used to compile the jar.                                                |
-| `versions`                | `string[]` | List of all available versions.                                                          |
-| `release-versions`        | `string[]` | List of all available release versions.                                                  |
-| `snapshot-versions`       | `string[]` | List of all available snapshot versions.                                                 |
-| `spril-fools-versions`    | `string[]` | List of all available april fools versions.                                              |
-| `create-time`             | `string`   | Time when the version was created/uploaded. (Based on the [input `version`](#inputs))    |
-| `release-time`            | `string`   | Time when the version was officially released. (Based on the [input `version`](#inputs)) |
-| `package-url`             | `string`   | Package URL of the version. (Based on the [input `version`](#inputs))                    |
-| `client-download-url`     | `string`   | URL to download the client. (Based on the [input `version`](#inputs))                    |
-| `server-download-url`     | `string`   | URL to download the server. (Based on the [input `version`](#inputs))                    |
-| `asset-index-url`         | `string`   | URL thats points to the assets. (Based on the [input `version`](#inputs))                |
+| Key                       | Type       | Description                                                                                                                  |
+|---------------------------|------------|------------------------------------------------------------------------------------------------------------------------------|
+| `version`                 | `string`   | The resolved version from the [input `version`](#inputs). (ex. `latest-release` gets resolved to the actual release version) |
+| `raw-json`                | `string`   | The raw manifest file parsed as JSON.                                                                                        |
+| `type`                    | `string`   | Type of the version.                                                                                                         |
+| `latest-release-version`  | `string`   | The latest release version.                                                                                                  |
+| `latest-snapshot-version` | `string`   | The latest snapshot version.                                                                                                 |
+| `java-version`            | `number`   | The java version used to compile the jar.                                                                                    |
+| `versions`                | `string[]` | List of all available versions.                                                                                              |
+| `release-versions`        | `string[]` | List of all available release versions.                                                                                      |
+| `snapshot-versions`       | `string[]` | List of all available snapshot versions.                                                                                     |
+| `spril-fools-versions`    | `string[]` | List of all available april fools versions.                                                                                  |
+| `create-time`             | `string`   | Time when the version was created/uploaded. (Based on the [input `version`](#inputs))                                        |
+| `release-time`            | `string`   | Time when the version was officially released. (Based on the [input `version`](#inputs))                                     |
+| `package-url`             | `string`   | Package URL of the version. (Based on the [input `version`](#inputs))                                                        |
+| `client-download-url`     | `string`   | URL to download the client. (Based on the [input `version`](#inputs))                                                        |
+| `server-download-url`     | `string`   | URL to download the server. (Based on the [input `version`](#inputs))                                                        |
+| `asset-index-url`         | `string`   | URL thats points to the assets. (Based on the [input `version`](#inputs))                                                    |
