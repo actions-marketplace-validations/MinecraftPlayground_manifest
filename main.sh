@@ -8,13 +8,13 @@
 # Global outputs:
 #
 # raw-json
+# type
 # latest-release-version
 # latest-snapshot-version
 # versions
 # release-versions
 # snapshot-versions
 # april-fools-versions
-# type
 # package-url
 # create-time
 # release-time
@@ -34,7 +34,7 @@ april_fools_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(
 
 selected_version=$INPUT_VERSION
 
-if [ "$INPUT_VERSION" == "latest-release" ]; then
+if [[ "$INPUT_VERSION" == "latest-release" || "$INPUT_VERSION" == "" ]]; then
   echo "Using latest release version: $latest_release_version"
   selected_version="$latest_release_version"
 elif [ "$INPUT_VERSION" == "latest-snapshot" ]; then
