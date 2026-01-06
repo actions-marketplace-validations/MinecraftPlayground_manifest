@@ -19,7 +19,7 @@ jobs:
           if-version-is-invalid: 'warn'
           
       - name: 'Run'
-        id: run
+        id: 'manifest'
         uses: ./
         with:
           version: 'latest-snapshot'
