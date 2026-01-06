@@ -43,10 +43,10 @@ april_fools_versions=$(echo "$manifest_response" | jq -c '[.versions[] | select(
 
 selected_version=$INPUT_VERSION
 
-if [ "$INPUT_VERSION" == "latest-release" ] || [ -z "$INPUT_VERSION" ]; then
+if [ "$INPUT_VERSION" -eq "latest-release" ] || [ -z "$INPUT_VERSION" ]; then
   echo "Using latest release version: $latest_release_version"
   selected_version="$latest_release_version"
-elif [ "$INPUT_VERSION" == "latest-snapshot" ]; then
+elif [ "$INPUT_VERSION" -eq "latest-snapshot" ]; then
   echo "Using latest snapshot version: $latest_snapshot_version"
   selected_version="$latest_snapshot_version"
 else
@@ -93,12 +93,12 @@ asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
 java_version=$(echo "$package_url_response" | jq -r '.javaVersion.majorVersion')
 
 is_latest_release=false
-if [ "$selected_version" == "$latest_release_version" ]; then
+if [ "$selected_version" -eq "$latest_release_version" ]; then
   is_latest_release=true
 fi
 
 is_latest_snapshot=false
-if [ "$selected_version" == "$latest_snapshot_version" ]; then
+if [ "$selected_version" -eq "$latest_snapshot_version" ]; then
   is_latest_snapshot=true
 fi
 
