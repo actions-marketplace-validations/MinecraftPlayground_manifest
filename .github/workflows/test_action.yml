@@ -42,3 +42,5 @@ jobs:
           echo "client-download-url: ${{ steps.manifest.outputs.client-download-url }}"
           echo "server-download-url: ${{ steps.manifest.outputs.server-download-url }}"
           echo "asset-index-url: ${{ steps.manifest.outputs.asset-index-url }}"
+          echo "is-latest-release: ${{ steps.manifest.outputs.is-latest-release }}"
+          echo "is-latest-snapshot: ${{ steps.manifest.outputs.is-latest-snapshot }}"
