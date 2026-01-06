@@ -92,12 +92,12 @@ asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
 java_version=$(echo "$package_url_response" | jq -r '.javaVersion.majorVersion')
 
 is_latest_release=false
-if [ "$selected_version" == "$latest_release_version"]: then
+if [ "$selected_version" == "$latest_release_version"]; then
   is_latest_release=true
 fi
 
 is_latest_snapshot=false
-if [ "$selected_version" == "$latest_snapshot_version"]: then
+if [ "$selected_version" == "$latest_snapshot_version"]; then
   is_latest_snapshot=true
 fi
 
