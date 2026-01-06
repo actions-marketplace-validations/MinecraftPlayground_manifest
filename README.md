@@ -34,6 +34,8 @@ jobs:
           echo "client-download-url: ${{ steps.manifest.outputs.client-download-url }}"
           echo "server-download-url: ${{ steps.manifest.outputs.server-download-url }}"
           echo "asset-index-url: ${{ steps.manifest.outputs.asset-index-url }}"
+          echo "is-latest-release: ${{ steps.manifest.outputs.is-latest-release }}"
+          echo "is-latest-snapshot: ${{ steps.manifest.outputs.is-latest-snapshot }}"
 ```
 
 ## Inputs
@@ -62,3 +64,5 @@ jobs:
 | `client-download-url`     | `string`   | URL to download the client. (Based on the [input `version`](#inputs))                                                        |
 | `server-download-url`     | `string`   | URL to download the server. (Based on the [input `version`](#inputs))                                                        |
 | `asset-index-url`         | `string`   | URL thats points to the assets. (Based on the [input `version`](#inputs))                                                    |
+| `is-latest-release`       | `boolean`  | If the version is the latest release version. (Based on the [input `version`](#inputs))                                      |
+| `is-latest-snapshot`      | `boolean`  | If the version is the latest snapshot version. (Based on the [input `version`](#inputs))                                     |
