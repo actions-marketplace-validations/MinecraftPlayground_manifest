@@ -83,6 +83,12 @@ outputs:
   asset-index-url:
     description: 'URL thats points to the assets. (Based on the input version)'
 
+  is-latest-release:
+    description: 'If the version is the latest release version. (Based on the input version)'
+
+  is-latest-snapshot:
+    description: 'If the version is the latest snapshot version. (Based on the input version)'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
