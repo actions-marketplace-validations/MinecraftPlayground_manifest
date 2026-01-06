@@ -24,6 +24,8 @@
 # client-download-url
 # server-download-url
 # asset-index-url
+# is-latest-release
+# is-latest-snapshot
 
 manifest_response=$(curl -fsSL "$INPUT_MANIFEST_URL") || {
   echo "::error::Fetch Failed: Could not fetch manifest"
@@ -89,6 +91,16 @@ server_download_url=$(echo "$package_url_response" | jq -r '.downloads.server.ur
 asset_index_url=$(echo "$package_url_response" | jq -r '.assetIndex.url')
 java_version=$(echo "$package_url_response" | jq -r '.javaVersion.majorVersion')
 
+is_latest_release=false
+if [ "$selected_version" == "$latest_release_version"]: then
+  is_latest_release=true
+fi
+
+is_latest_snapshot=false
+if [ "$selected_version" == "$latest_snapshot_version"]: then
+  is_latest_snapshot=true
+fi
+
 echo "version=$selected_version" >> "$GITHUB_OUTPUT"
 echo "raw-json=$raw_json" >> "$GITHUB_OUTPUT"
 echo "versions=$versions" >> "$GITHUB_OUTPUT"
@@ -105,5 +117,7 @@ echo "release-time=$release_time" >> "$GITHUB_OUTPUT"
 echo "client-download-url=$client_download_url" >> "$GITHUB_OUTPUT"
 echo "server-download-url=$server_download_url" >> "$GITHUB_OUTPUT"
 echo "asset-index-url=$asset_index_url" >> "$GITHUB_OUTPUT"
+echo "is-latest-release=$is_latest_release" >> "$GITHUB_OUTPUT"
+echo "is-latest-snapshot=$is_latest_snapshot" >> "$GITHUB_OUTPUT"
 
 exit 0
