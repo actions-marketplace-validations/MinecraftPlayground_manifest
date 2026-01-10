@@ -66,3 +66,6 @@ jobs:
 | `asset-index-url`         | `string`   | URL thats points to the assets. (Based on the [input `version`](#inputs))                                                    |
 | `is-latest-release`       | `boolean`  | If the version is the latest release version. (Based on the [input `version`](#inputs))                                      |
 | `is-latest-snapshot`      | `boolean`  | If the version is the latest snapshot version. (Based on the [input `version`](#inputs))                                     |
+
+## License
+The scripts and documentation in this project are released under the [GPLv3 License](./LICENSE).
